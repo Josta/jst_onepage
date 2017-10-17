@@ -109,6 +109,7 @@ The available cObjects are:
 To give an example: you have a tt_news installation with many different articles. Unfortunately the HTML title always shows "News" for every article, which is the page record name in the backend. On the tt_news page, you can override this behaviour by adding the following TypoScript:
 
 ::
+
 	lib.page {
 		category >
 		category = TEXT
@@ -129,43 +130,43 @@ The ``JST Onepage`` style can be affected through the following variables (given
 
 ::
 
-	$screen-sm-min: 		768px 	!default;
-	$screen-md-min: 		992px 	!default;
-	$screen-lg-min: 		1200px 	!default;
-	$grid-float-breakpoint: 825px 	!default;
-	
-	$theme-content-bg: 			#fff 	!default;
-	$theme-section-title-show: 	0 		!default;
-	$theme-footer: 				#444 	!default;
-	$theme-footer-bg: 			#888 	!default;
-	
-	$theme-nav:							#fff						!default;
-	$theme-nav-bg:						#2a3968						!default;
-	$theme-nav-link:					$theme-nav					!default;
-	$theme-nav-link-bg:					transparent					!default;
-	$theme-nav-link-hover:				#61bbe0						!default;
-	$theme-nav-link-hover-bg:			$theme-nav-link-bg			!default;
-	$theme-nav-link-active:				$theme-nav-bg				!default;
-	$theme-nav-link-active-bg:			$theme-nav-link-hover		!default;
-	$theme-nav-dropdown:				$theme-nav					!default;
-	$theme-nav-dropdown-bg:				$theme-nav-bg				!default;
-	$theme-nav-dropdown-link:			$theme-nav-dropdown			!default;
-	$theme-nav-dropdown-link-bg:		$theme-nav-link-bg			!default;
-	$theme-nav-dropdown-link-active:	$theme-nav-link-active		!default;
-	$theme-nav-dropdown-link-active-bg:	$theme-nav-link-active-bg	!default;
-	
-	$theme-side:						rgba(0,0,0,.75)				!default;
-	$theme-side-bg:						#f3f3f3						!default;
-	$theme-side-header:					$theme-nav					!default;
-	$theme-side-header-bg:				$theme-nav-bg				!default;
-	$theme-side-link:					$theme-nav-link				!default;
-	$theme-side-link-bg:				$theme-nav-link-bg			!default;
-	$theme-side-link-active:			$theme-nav-link-active		!default;
-	$theme-side-link-active-bg:			$theme-nav-link-active-bg	!default;
-	$theme-side-section-link:			$theme-nav-link				!default;
-	$theme-side-section-link-bg:		$theme-nav-link-bg			!default;
-	$theme-side-section-link-active:	$theme-nav-link-active-bg	!default;
-	$theme-side-section-link-active-bg:	transparent					!default;
+	$screen-sm-min: 768px !default;
+	$screen-md-min: 992px !default;
+	$screen-lg-min: 1200px !default;
+	$grid-float-breakpoint: 825px !default;
+
+	$theme-content-bg: #fff !default;
+	$theme-section-title-show: 0 !default;
+	$theme-footer: #444 !default;
+	$theme-footer-bg: #888 !default;
+
+	$theme-nav: #fff !default;
+	$theme-nav-bg: #2a3968 !default;
+	$theme-nav-link: $theme-nav !default;
+	$theme-nav-link-bg: transparent !default;
+	$theme-nav-link-hover: #61bbe0 !default;
+	$theme-nav-link-hover-bg: $theme-nav-link-bg !default;
+	$theme-nav-link-active: $theme-nav-bg !default;
+	$theme-nav-link-active-bg: $theme-nav-link-hover !default;
+	$theme-nav-dropdown: $theme-nav !default;
+	$theme-nav-dropdown-bg: $theme-nav-bg !default;
+	$theme-nav-dropdown-link: $theme-nav-dropdown !default;
+	$theme-nav-dropdown-link-bg: $theme-nav-link-bg !default;
+	$theme-nav-dropdown-link-active: $theme-nav-link-active !default;
+	$theme-nav-dropdown-link-active-bg: $theme-nav-link-active-bg !default;
+
+	$theme-side: rgba(0,0,0,.75) !default;
+	$theme-side-bg: #f3f3f3 !default;
+	$theme-side-header: $theme-nav !default;
+	$theme-side-header-bg: $theme-nav-bg !default;
+	$theme-side-link: $theme-nav-link !default;
+	$theme-side-link-bg: $theme-nav-link-bg !default;
+	$theme-side-link-active: $theme-nav-link-active !default;
+	$theme-side-link-active-bg: $theme-nav-link-active-bg !default;
+	$theme-side-section-link: $theme-nav-link !default;
+	$theme-side-section-link-bg: $theme-nav-link-bg !default;
+	$theme-side-section-link-active: $theme-nav-link-active-bg !default;
+	$theme-side-section-link-active-bg: transparent !default;
 	
 As you can see, there are variables that indicate the media breakpoints. Those should only be changed if you also compile Bootstrap with those same values. All other variables however mostly set colors. Many variables copy the values of other variables, so you only have to override those that have actual color values.
 
@@ -267,9 +268,9 @@ Constants
 	Has the following subkeys:
 	
 	- ``header``: boolean, whether a header should be included
-	- ``header.content_uid: id of a content element that should be included as header
+	- ``header.content_uid``: id of a content element that should be included as header
 	- ``footer``, boolean, whether a footer should be included
-	- ``footer.content_uid: id of a content element that should be included as footer
+	- ``footer.content_uid``: id of a content element that should be included as footer
 	
 Setup
 -----
@@ -278,8 +279,8 @@ Setup
 ~~~~~~~~~~~
 	Layout rendering definition. Here you can register new layouts, add new root paths, or add/modify settings or variables for use in the templates.
 	
-	-``templateName``: cObject that maps backend layout names to fluid templates.
-	-``templateRootPaths``, ``layoutRootPaths```, ``partialRootPaths``: arrays of paths that are search for page templates, and layouts/partials referenced therein
+	- ``templateName``: cObject that maps backend layout names to fluid templates.
+	- ``templateRootPaths``, ``layoutRootPaths```, ``partialRootPaths``: arrays of paths that are search for page templates, and layouts/partials referenced therein
 	- ``settings``: mostly copies the constants for use in the template. Additionally defines the setting ``robotAccess``, which indicates that the page is currently accessed by a robot.
 	- ``variables``: mostly copies the ``lib.page`` cObjects for easy use in the template. Additionally defines the cObjects ``rootPage`` and ``pageLayout`` which are filled automatically
 	
