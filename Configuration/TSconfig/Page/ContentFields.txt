@@ -1,0 +1,8 @@
+
+TCAdefaults.tt_content {
+	jst_onepage_size = m
+	jst_onepage_alignment = left
+	jst_onepage_animation = none
+	space_before_class = medium
+	space_after_class = medium
+}

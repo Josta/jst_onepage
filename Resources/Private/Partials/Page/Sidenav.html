@@ -1,0 +1,51 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<nav id="sidenav">
+	<div id="sidenav-eclipse">
+		<div id="sidenav-wait"><span class="icon-wait animate-spin"></span></div>
+	</div>
+	<div id="sidenav-bar">
+	
+		<div class="sidenav-header">
+			<h2 class="hidden">{f:translate(key: 'theme.navigation', extensionName: 'JstOnepage')}</h2>
+			<span class="{data.jst_assets_navclass}"></span> {pageTitle}
+		</div>
+		
+		<div class="sidenav-logo">
+			<f:image src="{settings.logo.file}" maxHeight="80" />
+		</div>
+		
+		<div class="sidenav-panel">
+			<ul class="sidenav-list" role="navigation" aria-label="{f:translate(key:'theme.extended_menu', extensionName:'JstOnepage')}">
+				<v:page.menu levels="3" expandAll="TRUE">
+					<f:for each="{menu}" as="it">
+						<f:if condition="{it.uid}=={data.uid}">
+							<f:then>
+					 			<li class="current">
+					 				<f:link.page pageUid="{it.uid}" class="{it.jst_assets_navclass}"
+					 					title="{it.title}">{it.linktext}</f:link.page>
+									<f:if condition="{it.hasSubPages}">
+							 			<ul class="current-section-list">
+							 				<v:page.menu.sub pageUid="{it.uid}" />
+							 			</ul>
+									</f:if>
+								</li>
+					 		</f:then>
+					 		<f:else>
+					 			<li>
+					 				<f:link.page pageUid="{it.uid}" class="{it.jst_assets_navclass}"
+					 					title="{it.title}">{it.linktext}</f:link.page>
+									<f:if condition="{it.hasSubPages}">
+							 			<ul><v:page.menu.sub pageUid="{it.uid}" /></ul>
+									</f:if>
+								</li>
+					 		</f:else>
+					 	</f:if>
+						
+					</f:for>
+				</v:page.menu>
+			</ul>		
+		</div>
+		
+	</div>
+</nav>

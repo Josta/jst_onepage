@@ -1,0 +1,5 @@
+# cat=basic/enable; type=boolean; label=Custom Page Tree icons: Pages with layouts get custom icons in the Page Tree
+use_pagetree_icons = 1
+
+# cat=basic/enable; type=boolean; label=Add content fields: Facilitates content layout by adding "size", "alignment" and "animation" options. 
+add_content_fields = 1

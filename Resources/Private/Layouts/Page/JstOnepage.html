@@ -1,0 +1,68 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}<f:spaceless>
+
+<v:page.header.title title="{pageFullTitle}" />
+<v:page.header.meta name="keywords" content="{data.keywords}" />
+<v:page.header.meta name="description" content="{data.description}" />
+<v:page.header.meta name="og:site_name" content="{v:site.name()}" />
+<v:page.header.meta name="og:title" content="{pageTitle}" />
+<v:page.header.meta name="og:type" content="website" />
+<v:page.header.meta name="og:url" content="{v:page.absoluteUrl()}" />
+<v:page.header.meta name="og:description" content="{data.description}" />
+
+{v:resource.record.fal(record: data, field: 'media', table: 'pages')
+	-> v:iterator.extract(key: 'uid') -> v:iterator.first() -> v:variable.set(name: 'pageMedia')}
+<f:if condition="{pageMedia}">
+	{f:uri.image(src: pageMedia, treatIdAsReference: 1, maxHeight: 1024, maxWidth: 1024)
+		-> v:format.prepend(add: "{v:site.url() -> v:format.substring(length: '-1')}")
+		-> v:variable.set(name: 'pageMediaURL')}
+	<v:page.header.meta name="og:image" content="{pageMediaURL}" />
+</f:if>
+
+<f:if condition="{settings.favicon.extendedFaviconPath}">
+	<f:comment>favicons created with http://realfavicongenerator.net</f:comment>
+	<v:page.header.link rel="apple-touch-icon" additionalAttributes="{sizes:'180x180'}"  href="{settings.favicon.extendedFaviconPath}/apple-touch-icon.png?v={settings.favicon.version}" />	 
+	<v:page.header.link rel="icon" type="image/png" href="{settings.favicon.extendedFaviconPath}/favicon-32x32.png?v={settings.favicon.version}" additionalAttributes="{sizes:'32x32'}" />	
+	<v:page.header.link rel="icon" type="image/png" href="{settings.favicon.extendedFaviconPath}/favicon-16x16.png?v={settings.favicon.version}" additionalAttributes="{sizes:'16x16'}" />	
+	<v:page.header.link rel="manifest" href="{settings.favicon.extendedFaviconPath}/manifest.json?v={settings.favicon.version}" />	
+	<v:page.header.link rel="mask-icon" href="{settings.favicon.extendedFaviconPath}/safari-pinned-tab.svg?v={settings.favicon.version}" additionalAttributes="{color:'#{settings.favicon.maskColor}'}" />	
+	<v:page.header.link rel="shortcut icon" href="{settings.favicon.extendedFaviconPath}/favicon.ico?v={settings.favicon.version}" />	
+</f:if>
+
+<div id="top"></div>
+<div id="alerts"></div>
+
+<div id="page" class="layout-{pageLayout}">
+
+    <a class="sr-only sr-only-focusable" href="#content">
+        <span>{f:translate(key: 'theme.skiptomaincontent', extensionName: 'JstOnepage')}</span>
+    </a>	
+	
+
+	<f:render partial="Sidenav" arguments="{_all}" />	
+	
+	<f:if condition="{settings.navbar.mode} != 'flip'">
+		<f:render partial="Navbar" arguments="{_all}" />	
+	</f:if>
+	
+	<f:if condition="{settings.sections.header}">
+		<header id="pageHeader">{pageHeader -> f:format.raw()}</header>
+	</f:if>
+	
+	<f:if condition="{settings.navbar.mode} == 'flip'">
+		<div id="menu-container">
+			<f:render partial="Navbar" arguments="{_all}" />	
+		</div>
+	</f:if>
+	
+    <div id="content">
+        <!--TYPO3SEARCH_begin-->
+        <f:render section="Main" />
+        <!--TYPO3SEARCH_end-->
+    </div>
+	
+	<f:if condition="{settings.sections.footer}">
+		<footer id="pageFooter">{pageFooter -> f:format.raw()}</footer>
+	</f:if>
+	
+</div>
+</f:spaceless>

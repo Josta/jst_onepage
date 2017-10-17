@@ -1,0 +1,29 @@
+<html data-namespace-typo3-fluid="true"
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+	
+<f:layout name="JstOnepage" />
+ 
+<f:section name="Main">
+	<v:menu.directory pages="{data.uid}" as="sections" showHiddenInMenu="1">
+		<f:for each="{sections}" as="sec" iteration="iteration">
+			<f:if condition="{sec.nav_hide}">
+				<f:then>
+					<div id="p{sec.uid}" class="section {sec.jst_assets_class}">
+						<v:content.render pageUid="{sec.uid}"/>
+					</div>
+				</f:then>
+				<f:else>
+					<section id="p{sec.uid}" class="section {sec.jst_assets_class}">
+						<div class="anchorLink" id="{v:format.sanitizeString(string:'{sec.linktext}')}"></div>
+						<h1 class="sectionTitle">{sec.title}</h1>
+						<f:comment>TODO: read realurl path cache</f:comment>
+						<v:content.render pageUid="{sec.uid}" />
+					</section>
+				</f:else>
+			</f:if>		
+		</f:for>
+	</v:menu.directory>
+</f:section>
+
+</html>

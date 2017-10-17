@@ -1,0 +1,33 @@
+
+page {
+
+	logo {
+		file = 	
+		fileNav = {$page.logo.file}
+		fileMicro = {$page.logo.fileNav}
+		linktitle = 
+	}
+	favicon {
+		file =
+		version = g43e
+		maskColor = dddddd
+		themeColor = ffffff
+		extendedFaviconPath = 
+	}
+
+	navbar {
+		title = 1
+		section_nav = 1
+		section_title = 1
+		login_link.page_uid = 
+		mode = fixed-top
+	}
+	
+	sections {
+		header = 0
+		header.content_uid =
+		footer = 0
+		footer.content_uid =	
+	}
+	
+}

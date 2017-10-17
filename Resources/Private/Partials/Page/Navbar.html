@@ -1,0 +1,69 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace jstonepage=Josta\JstOnepage\ViewHelpers}
+
+<div id="navbar" class="{f:if(condition: settings.navbar.title, then: 'with_title')} {f:if(condition: settings.navbar.section_nav, then: 'with_section_nav')} {f:if(condition: settings.navbar.section_title, then: 'with_section_title')} {f:if(condition: '{settings.navbar.mode} == \'flip\'', then: 'menu-bottom')} {f:if(condition: '{settings.navbar.mode} == \'static-top\'', then: 'menu-static')}">
+
+	<div id="nb-left">
+		<v:page.link id="nb-logo" pageUid="{rootPage}" title="{settings.logo.linktitle}">
+			<f:image id="nb-logo-nav" src="{settings.logo.fileNav}" maxHeight="60" class="hidden-collapsed" />
+			<f:image id="nb-logo-micro" src="{settings.logo.fileMicro}" class="hidden-not-collapsed" />
+		</v:page.link>
+	</div>
+	
+	<div id="nb-middle">
+	
+		<div id="nb-title"> 
+			<f:if condition="{settings.navbar.title}">
+				<f:if condition="{pageCategory} && ({pageCategory} != {pageTitle})">
+						<div id="nb-cat-title" class="h3">{pageCategory}</div>
+				</f:if>
+				<h1 id="nb-page-title">{pageTitle}</h1>
+			</f:if>
+			<f:if condition="{settings.navbar.section_title}">
+				<div id="nb-section-title" class="h1">{pageTitle}</div>
+			</f:if>
+		</div>
+		
+		<f:if condition="({pageLayout}=='jst_onepage') && {settings.navbar.section_nav}">
+			<ul id="nb-sections" class="hidden-collapsed" role="navigation" aria-label="{v:l(key:'theme.sections', extensionName:'JstOnepage')}">
+				<v:menu.directory pages="{data.uid}">
+					<li class="hidden active"><a href="#page" title="{data.title}">{data.title}</a></li>
+					<f:for each="{menu}" as="it2">
+						<li><f:link.page pageUid="{it2.uid}" class="todo{it2.jst_assets_navclass}"
+							title="{it2.title}">{it2.linktext}</f:link.page></li>
+					</f:for>
+					<li class="hidden"><a href="#post-content" title=""></a></li>
+				</v:menu.directory>
+			</ul>
+		</f:if>
+		
+	</div> 
+	 
+	<div id="nb-right">
+	
+		<div id="nb-menu-button">		
+			<div class="hidden-not-collapsed">
+				<a href="#sidenav" title="{v:l(key:'theme.extended_menu'), extensionName:'JstOnepage'}">
+					<jstonepage:icon name="menu" />
+				</a>
+			</div>	
+			<div id="nb-menu-dropdown" class="dropdown hidden-collapsed">
+			  <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="{v:l(key:'theme.extended_menu', extensionName:'JstOnepage')}">
+				<jstonepage:icon name="menu" />
+				<span class="caret"></span>
+			  </a>
+			  <ul class="dropdown-menu dropdown-menu-right">
+				<v:page.menu levels="1">
+					<f:for each="{menu}" as="item">
+						<li class="{item.class}">
+							<f:link.page pageUid="{item.uid}" title="{item.title}" class="{item.jst_assets_navclass}">{item.linktext}</f:link.page>
+						</li>
+					</f:for>
+				</v:page.menu>
+			  </ul>
+			</div>	
+		</div>
+		
+	</div>
+
+</div>

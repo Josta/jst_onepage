@@ -1,0 +1,20 @@
+{  
+	"name": "josta/jst_onepage",
+    "type": "typo3-cms-extension",
+    "description": "TYPO3 onepage structure & base theme provider",
+    "homepage": "https://github.com/josta/jst_onepage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josua Stabenow",
+            "email": "josua.stabenow@gmx.de"
+        }
+    ],
+	"preferred-install": "dist",
+    "support": {
+        "issues": "https://github.com/josta/jst_onepage/issues"
+	},
+    "require": {
+        "php": ">=7.0.0"
+    }
+}

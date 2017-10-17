@@ -1,0 +1,14 @@
+/* Shim to stay independent from jst_assets */
+@if not (mixin-exists('icon-color')) {
+	@mixin icon-color($color) {&:before{color: $color;}}
+}
+
+/* Bootstrap breakpoints, can be overridden */
+$screen-sm-min: 768px !default;
+$screen-md-min: 992px !default;
+$screen-lg-min: 1200px !default;
+$grid-float-breakpoint: 825px !default;
+
+@import "Styles/layout";
+@import "Styles/navigation";
+@import "Styles/content_frames";

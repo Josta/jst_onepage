@@ -1,0 +1,208 @@
+config {
+	doctype = html5
+	tx_realurl_enable = 1
+	noPageTitle = 2
+	metaCharset = utf-8
+	absRefPrefix = auto
+}
+
+page = PAGE
+page {
+	typeNum = 0
+	shortcutIcon = {$page.favicon.file}
+	meta {
+		viewport = width=device-width, initial-scale=1, minimum-scale=1
+		compatible = IE=edge,chrome=1
+	}
+	10 = FLUIDTEMPLATE
+	10 {
+		templateRootPaths.5 = EXT:jst_onepage/Resources/Private/Templates/Page/
+		partialRootPaths.5 = EXT:jst_onepage/Resources/Private/Partials/Page/
+		layoutRootPaths.5 = EXT:jst_onepage/Resources/Private/Layouts/Page/
+
+		templateName = TEXT
+		templateName.stdWrap.cObject = CASE
+		templateName.stdWrap.cObject {
+			key.data = pagelayout
+			default = TEXT
+			default.value = Default
+			pagets__jst_onepage = TEXT
+			pagets__jst_onepage.value = Onepage
+			pagets__jst_onepage_page = TEXT
+			pagets__jst_onepage_page.value = Page
+		}
+		
+		settings {
+			logo {
+				file = 		{$page.logo.file}
+				fileNav = 	{$page.logo.fileNav}
+				fileMicro = {$page.logo.fileMicro}
+				linktitle = {$page.logo.linktitle}
+			}
+			favicon {
+				file = 	 	 {$page.favicon.file}
+				version = 	 {$page.favicon.version}
+				maskColor =  {$page.favicon.maskColor}
+				themeColor = {$page.favicon.themeColor}
+				extendedFaviconPath = {$page.favicon.extendedFaviconPath}
+			}
+			navbar {
+				title = {$page.navbar.title}
+				section_nav = {$page.navbar.section_nav}
+				section_title = {$page.navbar.section_title}
+				login_link.page_uid = {$page.navbar.login_link.page_uid}
+				mode = {$page.navbar.mode}
+			}
+			sections {
+				header = {$page.sections.header}
+				footer = {$page.sections.footer}
+			}
+			robotAccess = 0
+		}
+		
+		variables {
+			# local variables
+			rootPage = TEXT
+			rootPage.data = leveluid:0
+			pageLayout = TEXT
+			pageLayout.data = pagelayout
+			pageLayout.replacement.10 {
+				search = pagets__
+				replace = 
+			}
+			# convenience links
+			pageCategory =< lib.page.category
+			pageTitle =< lib.page.title
+			pageHeader =< lib.page.header
+			pageFooter =< lib.page.footer
+			pageFullTitle =< lib.page.fullTitle
+		}
+	}
+}
+
+[device = robots]
+	page.10.settings.robotAccess = 1
+[end]
+
+lib.page {
+	header = RECORDS
+	header {
+		tables = tt_content
+		source = {$page.sections.header.content_uid}
+		dontCheckPid = 1
+	}
+	footer < .header
+	footer.source = {$page.sections.footer.content_uid}
+	title = TEXT
+	title.data = page:title
+	category = TEXT
+	fullTitle = COA
+	fullTitle {
+		10 = TEXT
+		10.cObject =< lib.page.title
+		10.required = 1
+		10.noTrimWrap = || - |
+		20 = TEXT
+		20.cObject =< lib.page.category
+		20.required = 1
+		20.noTrimWrap = || - |
+		30 = TEXT
+		30.data = TSFE:tmpl|setup|sitetitle
+		#30.data = TSFE:TYPO3_CONF_VARS|SYS|sitename
+	}
+}
+lib.content {
+	# Define new content frame CSS classes
+	class = COA
+	class {
+	
+		# content type
+		1 = TEXT
+		1.value.field = tx_gridelements_backend_layout // list_type // CType
+		1.replacement.10 {
+			search = _
+			replace = -
+		}
+		1.noTrimWrap = | type-||
+		
+		# frame-class + layout
+		#5 = TEXT
+		#5.noTrimWrap = | frame-{field:frame_class} layout-{field:layout}||
+		#5.insertData = 1
+		
+		# tspace
+		10 = TEXT
+		10.if.isTrue.field = space_before_class
+		10.value.field = space_before_class
+		10.replacement {
+			5.search = extra-large
+			5.replace = xl
+			10.search = extra-small
+			10.replace = xs
+			20.search = small
+			20.replace = s
+			30.search = medium
+			30.replace = m
+			40.search = large
+			40.replace = l
+		}
+		10.noTrimWrap = | tspace-||
+	
+		# bspace
+		11 = TEXT
+		11.if.isTrue.field = space_after_class
+		11.value.field = space_after_class
+		11.replacement < .10.replacement
+		11.noTrimWrap = | bspace-||
+		
+		
+		# size class
+		20 = TEXT
+		20.value.field = jst_onepage_size
+		20.noTrimWrap = | size-||
+		
+		# general alignment class
+		21 = TEXT
+		21.value.field = jst_onepage_alignment
+		21.noTrimWrap = | f-align-||
+		
+		# animate class
+		22 = TEXT
+		22.value.field = jst_onepage_animate
+		22.if.value.field =  jst_onepage_animate
+		22.if.equals = none
+		22.if.negate = 1
+		22.noTrimWrap = | animate-||
+
+		stdWrap.trim = 1
+	}
+}
+
+lib.contentElement.layoutRootPaths {
+	# Provide layout with new content classes
+	70 = EXT:jst_onepage/Resources/Private/Layouts/fluid_styled_content/
+}
+
+# assets
+page {
+	includeJSLibs {
+		modernizr = EXT:jst_onepage/Resources/Public/Vendor/modernizr/modernizr-2.8.3-respond-1.4.2.min.js
+		modernizr.disableCompression = 1
+		detectmobilebrowser = EXT:jst_onepage/Resources/Public/Vendor/detectmobilebrowser/detectmobilebrowser.js
+		detectmobilebrowser.disableCompression = 1
+	}
+	includeJSFooterlibs {
+		jquerynav = EXT:jst_onepage/Resources/Public/Vendor/jquery-nav/jquery.nav.min.js
+		jquerynav.disableCompression = 1
+		scrollreveal = EXT:jst_onepage/Resources/Public/Vendor/scroll-reveal/scrollReveal.min.js
+		scrollreveal.disableCompression = 1
+	}
+}
+[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('jst_assets')]
+	page.includeCSS.jst_onepage = EXT:jst_onepage/Resources/Public/jst_onepage.scss
+	page.includeJSFooter.jst_onepage = EXT:jst_onepage/Resources/Public/jst_onepage.coffee
+[else]
+	page.includeCSS.icon_markup = EXT:jst_onepage/Resources/Public/Precompiled/icons.css
+	page.includeCSS.jst_onepage = EXT:jst_onepage/Resources/Public/Precompiled/jst_onepage.css
+	page.includeJSFooter.jst_onepage = EXT:jst_onepage/Resources/Public/Precompiled/jst_onepage.js
+[end]

@@ -1,0 +1,66 @@
+# Changing content on child pages should clear cache as well
+TCEMAIN.clearCache_pageGrandParent = 1
+
+# BACKEND LAYOUT FOR ONEPAGE
+mod.web_layout.BackendLayouts {
+	jst_container {
+		title = LLL:EXT:jst_onepage/Resources/Private/Language/locallang.xlf:backend_layout.container
+		icon = EXT:jst_onepage/Resources/Public/Icons/Layouts/container.gif
+		config.backend_layout {
+			colCount = 0
+			rowCount = 1
+			rows.99.columns.1 {
+				# This imaginary column fixes a flux nested content bug
+				name = FCE
+				colPos = 18181        
+            }
+		}	
+	}
+	jst_onepage {
+		title = LLL:EXT:jst_onepage/Resources/Private/Language/locallang.xlf:backend_layout.onepage
+		icon = EXT:jst_onepage/Resources/Public/Icons/Layouts/onepage.gif
+		config.backend_layout {
+			colCount = 0
+			rowCount = 1
+			rows.99.columns.1 {
+				# This imaginary column fixes a flux nested content bug
+				name = FCE
+				colPos = 18181        
+            }
+		}	
+	}
+	jst_onepage_section {
+		title = LLL:EXT:jst_onepage/Resources/Private/Language/locallang.xlf:backend_layout.onepage_section
+		icon = EXT:jst_onepage/Resources/Public/Icons/Layouts/onepage_section.gif
+		config.backend_layout {
+			colCount = 1
+			rowCount = 1
+			rows.1.columns.1 {
+				name = LLL:EXT:jst_onepage/Resources/Private/Language/locallang.xlf:backend_layout.column.section_content
+				colPos = 0
+			}
+			rows.99.columns.1 {
+				# This imaginary column fixes a flux nested content bug
+				name = FCE
+				colPos = 18181        
+            }
+		}	
+	}
+	jst_onepage_page {
+		title = LLL:EXT:jst_onepage/Resources/Private/Language/locallang.xlf:backend_layout.page
+		icon = EXT:jst_onepage/Resources/Public/Icons/Layouts/page.gif
+		config.backend_layout {
+			colCount = 1
+			rowCount = 1
+			rows.1.columns.1 {
+				name = LLL:EXT:jst_onepage/Resources/Private/Language/locallang.xlf:backend_layout.column.page_content
+				colPos = 0
+			}
+			rows.99.columns.1 {
+				# This imaginary column fixes a flux nested content bug
+				name = FCE
+				colPos = 18181        
+            }
+		}	
+	}	
+}

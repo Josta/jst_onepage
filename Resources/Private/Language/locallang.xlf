@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" date="2012-10-18T17:55:17Z" product-name="jst_onepage">
+        <header/>
+        <body>
+
+			<trans-unit id="backend_layout.onepage">
+                <source>JST Onepage</source>
+            </trans-unit>		
+			<trans-unit id="backend_layout.onepage_section">
+                <source>JST Onepage Section</source>
+            </trans-unit>		
+			<trans-unit id="backend_layout.page">
+                <source>JST Page</source>
+            </trans-unit>  
+			<trans-unit id="backend_layout.container">
+                <source>Container</source>
+            </trans-unit> 
+			<trans-unit id="backend_layout.column.page_content">
+                <source>Page Content</source>
+            </trans-unit>  
+            <trans-unit id="backend_layout.column.section_content">
+                <source>Section Content</source>
+            </trans-unit>
+		
+			<trans-unit id="theme.navigation">
+                <source>Navigation</source>
+            </trans-unit>
+			<trans-unit id="theme.skiptomaincontent">
+                <source>Skip to main content</source>
+            </trans-unit>
+			<trans-unit id="theme.sections">
+				<source>Sections</source>
+			</trans-unit>
+			<trans-unit id="theme.extended_menu">
+				<source>Menu</source>
+			</trans-unit>
+			<trans-unit id="theme.to_top">
+				<source>To Top</source>
+			</trans-unit>
+			<trans-unit id="theme.to_login">
+				<source>Login</source>
+			</trans-unit>
+			<trans-unit id="theme.to_home">
+				<source>To Home</source>
+			</trans-unit>
+			<trans-unit id="theme.close">
+				<source>Close</source>
+			</trans-unit>
+			
+			<trans-unit id="tt_content.fields.alignment">
+				<source>Alignment</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.alignment.opt.left">
+				<source>Left</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.alignment.opt.center">
+				<source>Center</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.alignment.opt.right">
+				<source>Right</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.alignment.opt.justify">
+				<source>Justify</source>
+			</trans-unit>
+			
+			<trans-unit id="tt_content.fields.size">
+				<source>Size</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.xs">
+				<source>Very Small (XS)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.s">
+				<source>Small (S)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.m">
+				<source>Medium (M)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.l">
+				<source>Large (L)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.xl">
+				<source>Very Large (XL)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.xxl">
+				<source>Max (XXL)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.size.opt.full">
+				<source>100% Width</source>
+			</trans-unit>
+			
+			<trans-unit id="tt_content.fields.animate">
+				<source>Animate</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.animate.opt.left">
+				<source>From Left</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.animate.opt.right">
+				<source>From Right</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.animate.opt.bottom">
+				<source>From Bottom</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.animate.opt.blend">
+				<source>Blend In</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.animate.opt.auto">
+				<source>Auto animate</source>
+			</trans-unit>
+			<trans-unit id="tt_content.fields.animate.opt.none">
+				<source>Don't animate</source>
+			</trans-unit>
+
+		</body>
+	</file>	
+</xliff>

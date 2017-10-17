@@ -1,0 +1,89 @@
+$theme-content-bg: #fff !default;
+$theme-section-title-show: 0 !default;
+$theme-footer: #444 !default;
+$theme-footer-bg: #888 !default;
+
+
+@media (max-width: $grid-float-breakpoint) {
+	.hidden-collapsed {
+		display: none !important;
+	}   
+}
+@media (min-width: $grid-float-breakpoint + 1) {
+	.hidden-not-collapsed {
+		display: none !important;
+	}
+}
+#page:not(.layout-jst_onepage) .hidden-not-onepage,
+#page.layout-jst_onepage_page .hidden-onepage {
+	display: none !important;
+}
+
+
+#alerts {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 750;
+	.alert {
+		margin: 10px auto;
+		width: 95%;
+		max-width: 500px;
+		box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	}
+}
+
+#page {
+	overflow: hidden; // prevent horizontal scrollbar
+}
+
+#pageHeader {
+	min-height: 90px;
+}
+
+#content {
+	position: relative;
+	min-height: 100vh;
+	background: $theme-content-bg;
+	&:before, &:after {
+		content: ' ';
+		display: table;
+	}
+}
+
+/* can be a <section> or a <div> */
+.section { 
+	padding: 50px 20px;
+	&.no-padding {
+		padding: 0;
+	}
+	&:before, &:after {
+		content: ' ';
+		display: table;
+	}
+	&:first-child {
+		padding-top: 0;
+	}
+	
+	
+	.sectionTitle {
+		@if $theme-section-title-show == 0 {
+			display: none;
+		}
+	}
+	.anchorLink {
+		position: relative;
+		top: -65px;
+		@media (min-width: $screen-sm-min) {
+			top: -110px;
+		}
+	}
+}
+
+#pageFooter {
+	position: relative;
+	z-index: 100;
+	color: $theme-footer;
+	background: $theme-footer-bg;
+}
